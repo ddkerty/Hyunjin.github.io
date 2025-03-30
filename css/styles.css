@@ -72,9 +72,17 @@ body {
     padding: 2rem;
 }
 
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+    border: 5px solid #fff;
+}
+
 .about-profile-img {
-    width: 150px;  /* 300px에서 150px로 줄임 */
-    height: 150px;  /* 300px에서 150px로 줄임 */
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     margin-bottom: 2rem;
     border: 3px solid #2c3e50;
