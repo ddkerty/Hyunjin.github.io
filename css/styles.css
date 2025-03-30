@@ -26,7 +26,7 @@ body {
 }
 
 .logo {
-    margin-right: 3rem;   /* 로고의 왼쪽 여백 추가 */
+    margin-left: 1rem;   /* 로고의 왼쪽 여백 추가 */
 }
 
 .logo a {
