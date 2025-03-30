@@ -230,81 +230,80 @@ footer {
     gap: 2rem;
 }
 
-/* 모든 페이지의 메인 콘텐츠에 적용될 공통 스타일 */
+/* 공통 페이지 스타일 */
 .projects-page,
 .blog-page,
 .about-page,
 .contact-page {
-    padding-top: 100px;  /* contact 페이지와 동일한 상단 여백 */
-    min-height: 100vh;
+    padding-top: 80px;  /* 네비게이션 바 높이 + 여유 공간 */
+    min-height: calc(100vh - 60px);  /* 전체 높이에서 네비게이션 바 높이를 뺌 */
     background-color: #f5f5f5;
-}
-
-/* 각 페이지의 콘텐츠 컨테이너 */
-.about-content,
-.projects-content,
-.blog-content,
-.contact-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
 }
 
 /* about 페이지 스타일 */
 .about-page {
-    padding-top: 100px;
-    min-height: 100vh;
-    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 20px 40px;  /* 상단 네비바 여유, 좌우 여백, 하단 여백 */
 }
 
 .about-content {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 800px;  /* 더 좁게 조정 */
+    width: 100%;
+    background-color: white;
     padding: 2rem;
-}
-
-.about-text {
-    max-width: 800px;
-    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .about-text h1 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
     color: #2c3e50;
+    text-align: center;
 }
 
 .about-text p {
     font-size: 1.1rem;
-    margin-bottom: 2rem;
     line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #444;
+}
+
+.about-text h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin: 2.5rem 0 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
 }
 
 .experience-list,
 .education-list {
     list-style: none;
-    margin: 2rem 0;
+    margin: 1.5rem 0;
 }
 
 .experience-list li,
 .education-list li {
-    margin-bottom: 2rem;
+    background-color: #f8f9fa;
     padding: 1.5rem;
-    background-color: #fff;
+    margin-bottom: 1rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .experience-list h3,
 .education-list h3 {
     color: #2c3e50;
     margin-bottom: 0.5rem;
+    font-size: 1.3rem;
 }
 
-.about-text h2 {
-    font-size: 2rem;
-    color: #2c3e50;
-    margin: 3rem 0 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #3498db;
+.experience-list p,
+.education-list p {
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
 } 
