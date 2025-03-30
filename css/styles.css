@@ -248,4 +248,63 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
+}
+
+/* about 페이지 스타일 */
+.about-page {
+    padding-top: 100px;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.about-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.experience-list,
+.education-list {
+    list-style: none;
+    margin: 2rem 0;
+}
+
+.experience-list li,
+.education-list li {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.experience-list h3,
+.education-list h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin: 3rem 0 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
 } 
