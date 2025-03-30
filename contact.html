@@ -26,37 +26,24 @@
     </nav>
 
     <main class="contact-page">
-        <h1>연락처</h1>
         <div class="contact-content">
+            <h1>연락처</h1>
             <div class="contact-info">
-                <h2>연락 방법</h2>
-                <ul>
-                    <li><i class="fas fa-envelope"></i> 이메일: phj8507@gmail.com</li>
-                    <li><i class="fas fa-phone"></i> 전화: 010-2669-8507</li>
-                </ul>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>이메일</h3>
+                    <p><a href="mailto:phj8507@gmail.com">phj8507@gmail.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>위치</h3>
+                    <p>서울특별시</p>
+                </div>
             </div>
-            <form class="contact-form" action="https://formsubmit.co/phj8507@gmail.com" method="POST">
-                <h2>메시지 보내기</h2>
-                <div class="form-group">
-                    <label for="name">이름</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">이메일</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">메시지</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <!-- 스팸 방지를 위한 허니팟 필드 -->
-                <input type="text" name="_honey" style="display: none">
-                <!-- 다음 페이지 설정 -->
-                <input type="hidden" name="_next" value="https://ddkerty.github.io/Hyunjin.github.io/thanks.html">
-                <!-- 자동 응답 메일 비활성화 -->
-                <input type="hidden" name="_autoresponse" value="메시지가 성공적으로 전송되었습니다. 감사합니다!">
-                <button type="submit" class="btn primary">보내기</button>
-            </form>
+            <div class="contact-message">
+                <p>게임 밸런스 디자인과 관련된 문의사항이나 협업 제안은 언제든 환영합니다.</p>
+                <p>이메일로 연락 주시면 빠른 시일 내에 답변 드리도록 하겠습니다.</p>
+            </div>
         </div>
     </main>
 
