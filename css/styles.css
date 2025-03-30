@@ -25,6 +25,10 @@ body {
     z-index: 1000;
 }
 
+.logo {
+    margin-left: 2rem;   /* 로고의 왼쪽 여백 추가 */
+}
+
 .logo a {
     color: #fff;
     text-decoration: none;
@@ -35,6 +39,8 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
+    margin-right: auto;  /* 왼쪽 정렬을 위해 추가 */
+    margin-left: 2rem;   /* 왼쪽 여백 추가 */
 }
 
 .nav-links li a {
