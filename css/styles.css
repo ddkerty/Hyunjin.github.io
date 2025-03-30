@@ -74,6 +74,12 @@ body {
     border: 5px solid #fff;
 }
 
+.hero-title {
+    text-indent: 2em;  /* 들여쓰기 (2em = 현재 폰트 크기의 2배) */
+    line-height: 1.8;  /* 줄 간격 */
+    margin-bottom: 1.5rem;  /* 아래 여백 */
+}
+
 .hero h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
