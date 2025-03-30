@@ -65,6 +65,7 @@ body {
     background-size: cover;
     background-position: center;
     color: #fff;
+    padding-top: 0;
 }
 
 .hero-content {
@@ -234,4 +235,18 @@ footer {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 2rem;
+}
+
+/* 모든 페이지의 메인 콘텐츠에 적용될 공통 스타일 */
+main {
+    padding-top: 80px;  /* 네비게이션 바 높이 + 여유 공간 */
+}
+
+/* 각 페이지별 추가 스타일 */
+.projects-page,
+.blog-page,
+.about-page,
+.contact-page {
+    min-height: calc(100vh - 80px);  /* 네비게이션 바 높이를 제외한 최소 높이 */
+    background-color: #f5f5f5;
 } 
