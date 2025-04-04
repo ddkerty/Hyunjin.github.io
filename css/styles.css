@@ -399,6 +399,32 @@
         padding: 10px;
       }
     }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      position: absolute;
+      top: 15px;
+      right: 20px; /* 오른쪽 끝으로 이동 */
+      z-index: 100;
+    }
+    
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: rgba(0, 0, 0, 0.8);
+      position: absolute;
+      top: 50px; /* 햄버거 버튼 바로 아래 */
+      right: 20px; /* 오른쪽 끝 정렬 */
+      width: 200px;
+      text-align: center;
+      border-radius: 5px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    .nav-links.active {
+      display: flex;
+    }
     
     
 
