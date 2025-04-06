@@ -178,3 +178,45 @@ body {
   color: #3498db;
   margin-bottom: 1rem;
 }
+
+/* 도구 페이지 스타일 */
+.tools-page {
+    padding-top: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.tool-section {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.tool-description {
+    margin-bottom: 2rem;
+}
+
+.tool-description p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.tool-description ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.tool-description li {
+    margin-bottom: 0.5rem;
+}
+
+.simulator-container {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
