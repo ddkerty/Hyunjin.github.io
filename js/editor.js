@@ -1,5 +1,10 @@
 class WebPageEditor {
   constructor() {
+    // 에디터 페이지에서만 실행
+    if (!document.getElementById('editorMode')) {
+      return;
+    }
+
     this.editorButton = document.getElementById('editorMode');
     this.pageSelect = document.getElementById('pageSelect');
     this.saveBtn = document.getElementById('saveBtn');
@@ -424,8 +429,10 @@ class WebPageEditor {
   }
 }
 
-// 에디터 초기화
-document.addEventListener('DOMContentLoaded', () => {
-  new WebPageEditor();
-});
+// 에디터 페이지에서만 초기화
+if (document.getElementById('editorMode')) {
+  document.addEventListener('DOMContentLoaded', () => {
+    new WebPageEditor();
+  });
+}
   
