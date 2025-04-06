@@ -33,6 +33,11 @@ class WebPageEditor {
     // 초기 상태 설정
     this.editorButton.textContent = "편집 모드 활성화";
     this.previewFrame.classList.remove('editing-mode');
+
+    // iframe 로드 이벤트 처리
+    this.previewFrame.addEventListener('load', () => {
+      this.setupIframeEvents();
+    });
   }
 
   setupEventListeners() {
@@ -45,9 +50,6 @@ class WebPageEditor {
     // 저장 버튼 이벤트
     this.saveBtn.addEventListener('click', () => this.saveChanges());
     
-    // iframe 로드 이벤트
-    this.previewFrame.addEventListener('load', () => this.handleFrameLoad());
-
     // 이미지 추가 버튼 이벤트
     this.addImageBtn.addEventListener('click', () => this.imageUploader.click());
 
@@ -64,12 +66,16 @@ class WebPageEditor {
   }
 
   handlePageChange(e) {
-    this.currentPage = e.target.value;
-    this.previewFrame.src = this.currentPage;
+    const selectedPage = this.pageSelect.value;
+    this.currentPage = selectedPage;
+    
+    // iframe 소스 변경
+    this.previewFrame.src = selectedPage;
+    
+    // 편집 모드 초기화
     this.isEditing = false;
     this.editorButton.textContent = "편집 모드 활성화";
-    
-    // 페이지 변경 시 자동 저장 중지
+    this.previewFrame.classList.remove('editing-mode');
     this.stopAutoSave();
   }
 
@@ -100,6 +106,9 @@ class WebPageEditor {
       this.previewFrame.classList.remove('editing-mode');
       this.stopAutoSave();
     }
+
+    // 편집 모드가 변경될 때마다 iframe 이벤트 다시 설정
+    this.setupIframeEvents();
   }
 
   applyEditingMode(enable) {
@@ -383,6 +392,34 @@ class WebPageEditor {
 
     document.addEventListener('mouseup', () => {
       isDragging = false;
+    });
+  }
+
+  setupIframeEvents() {
+    const previewDoc = this.getPreviewDocument();
+    if (!previewDoc) return;
+
+    // iframe 내부의 모든 버튼에 이벤트 리스너 추가
+    const buttons = previewDoc.querySelectorAll('button');
+    buttons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        // 버튼의 원래 동작을 유지하면서 편집 모드 상태를 확인
+        if (this.isEditing) {
+          e.preventDefault();
+          alert('편집 모드에서는 버튼을 클릭할 수 없습니다. 편집 모드를 비활성화하세요.');
+        }
+      });
+    });
+
+    // 링크 클릭 이벤트 처리
+    const links = previewDoc.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (this.isEditing) {
+          e.preventDefault();
+          alert('편집 모드에서는 링크를 클릭할 수 없습니다. 편집 모드를 비활성화하세요.');
+        }
+      });
     });
   }
 }
