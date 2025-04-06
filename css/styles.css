@@ -133,11 +133,25 @@ body {
   text-decoration: none;
   border-radius: 5px;
   font-size: 1.1rem;
+  transition: all 0.3s ease;
 }
 
 .primary {
   background-color: #3498db;
-  color: #fff;
+  color: white;
+}
+
+.primary:hover {
+  background-color: #2980b9;
+}
+
+.secondary {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.secondary:hover {
+  background-color: #27ae60;
 }
 
 /* 전문 분야 카드 레이아웃 */
