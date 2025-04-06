@@ -41,7 +41,12 @@ class WebPageEditor {
 
     // iframe 로드 이벤트 처리
     this.previewFrame.addEventListener('load', () => {
-      this.setupIframeEvents();
+      const previewDoc = this.getPreviewDocument();
+      if (previewDoc) {
+        // 초기 로드 시 편집 모드 비활성화
+        previewDoc.body.contentEditable = false;
+        this.setupIframeEvents();
+      }
     });
   }
 
