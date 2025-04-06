@@ -116,7 +116,7 @@ class WebPageEditor {
     if (!previewDoc) return;
 
     // 텍스트 요소 편집 가능 설정
-    const textElements = previewDoc.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, li');
+    const textElements = previewDoc.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, li');
     textElements.forEach(element => {
       element.contentEditable = enable;
       element.classList.toggle('editable', enable);
