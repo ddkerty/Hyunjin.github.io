@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹 페이지 편집기</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* 편집 모드 토글 버튼 */
+    #editorMode {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+      padding: 10px 15px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* 편집 모드일 때 텍스트 요소에 표시할 경계선 */
+    .editable {
+      border: 1px dashed #ccc;
+      padding: 5px;
+      margin: 5px 0;
+    }
+
+    /* 드래그 가능한 이미지 스타일 */
+    .draggable {
+      cursor: move;
+      position: absolute;
+    }
+
+    .draggable:hover {
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    /* 드래그 중인 이미지 스타일 */
+    .dragging {
+      opacity: 0.5;
+      border: 2px dashed #3498db;
+    }
+
+    /* 이미지 호버 효과 */
+    img:hover {
+      cursor: move;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    /* 편집 모드일 때의 커서 스타일 */
+    .editing-mode {
+      cursor: text;
+    }
+
+    /* 편집 모드일 때의 이미지 커서 */
+    .editing-mode img {
+      cursor: move;
+    }
+
+    /* 페이지 선택 드롭다운 */
+    .page-selector {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      padding: 10px;
+      background-color: white;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .page-selector select {
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    /* 저장 버튼 */
+    #saveBtn {
+      position: fixed;
+      top: 10px;
+      right: 240px;
+      z-index: 1000;
+      padding: 10px 15px;
+      background-color: #2ecc71;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* iframe 스타일 */
+    #previewFrame {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 60px);
+      border: none;
+    }
+
+    /* 편집 모드 활성화 시 iframe 스타일 */
+    .editing-mode #previewFrame {
+      border: 1px solid #3498db;
+    }
+
+    /* 이미지 추가 버튼 스타일 */
+    #addImageBtn {
+      position: fixed;
+      top: 10px;
+      right: 120px;
+      z-index: 1000;
+      padding: 10px 15px;
+      background-color: #f39c12;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #imageUploader {
+      display: none;
+    }
+
+    /* 에디터 툴바 스타일 */
+    #toolbar {
+      position: fixed;
+      top: 10px;
+      right: 360px;
+      z-index: 1000;
+      background-color: white;
+      padding: 10px;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      cursor: move;
+    }
+
+    #toolbar select,
+    #toolbar button {
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #fff;
+    }
+
+    #toolbar button {
+      cursor: pointer;
+      padding: 5px 10px;
+      font-weight: bold;
+    }
+
+    #toolbar button:hover {
+      background-color: #f5f5f5;
+    }
+
+    #toolbar input[type="color"] {
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    /* 폰트 스타일 버튼 */
+    .font-style-btn {
+      font-weight: bold;
+    }
+
+    .font-style-btn.italic {
+      font-style: italic;
+    }
+
+    .font-style-btn.underline {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-selector">
+    <select id="pageSelect">
+      <option value="index.html">메인 페이지</option>
+      <option value="about.html">소개 페이지</option>
+      <option value="projects.html">프로젝트 페이지</option>
+      <option value="tools.html">도구 페이지</option>
+      <option value="blog.html">블로그 페이지</option>
+      <option value="contact.html">연락처 페이지</option>
+    </select>
+  </div>
+  
+  <div id="toolbar">
+    <select id="fontFamily">
+      <option value="Arial">Arial</option>
+      <option value="Georgia">Georgia</option>
+      <option value="Courier New">Courier New</option>
+    </select>
+
+    <select id="fontSize">
+      <option value="1">10px</option>
+      <option value="2">13px</option>
+      <option value="3" selected>16px</option>
+      <option value="4">18px</option>
+      <option value="5">24px</option>
+      <option value="6">32px</option>
+      <option value="7">48px</option>
+    </select>
+
+    <button id="boldBtn">B</button>
+    <button id="italicBtn">I</button>
+    <button id="underlineBtn">U</button>
+    <input type="color" id="textColor" value="#000000">
+  </div>
+
+  <button id="addImageBtn">이미지 추가</button>
+  <input type="file" id="imageUploader" accept="image/*">
+  <button id="saveBtn">저장하기</button>
+  <button id="editorMode">편집 모드 활성화</button>
+  
+  <iframe id="previewFrame" src="index.html"></iframe>
+
+  <script src="js/editor.js"></script>
+</body>
+</html>
